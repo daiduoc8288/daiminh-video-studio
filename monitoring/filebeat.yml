@@ -1,0 +1,27 @@
+filebeat.inputs:
+  - type: docker
+    enabled: true
+    containers.ids:
+      - '*'
+    processors:
+      - add_docker_metadata: ~
+      - add_fields:
+          target: ''
+          fields:
+            environment: production
+
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+output.elasticsearch:
+  hosts: ['elasticsearch:9200']
+  index: 'daiminh-%{+yyyy.MM.dd}'
+
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  keepfiles: 7
+  permissions: 0644

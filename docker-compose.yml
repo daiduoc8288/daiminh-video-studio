@@ -1,0 +1,93 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: daiminh_postgres
+    environment:
+      POSTGRES_DB: daiminh_video_studio
+      POSTGRES_USER: daiminh
+      POSTGRES_PASSWORD: daiminh123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U daiminh"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - daiminh-network
+
+  # Redis Cache & Job Queue
+  redis:
+    image: redis:7-alpine
+    container_name: daiminh_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - daiminh-network
+
+  # MinIO (S3-compatible)
+  minio:
+    image: minio/minio:latest
+    container_name: daiminh_minio
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9010:9000"
+      - "9011:9001"
+    volumes:
+      - minio_data:/minio_data
+    command: minio server /minio_data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - daiminh-network
+
+  # FastAPI Backend
+  backend:
+    build: ./backend
+    container_name: daiminh_backend
+    environment:
+      DATABASE_URL: postgresql://daiminh:daiminh123@daiminh_postgres:5432/daiminh_video_studio
+      REDIS_URL: redis://daiminh_redis:6379/0
+      DEBUG: "true"
+      BACKEND_HOST: 0.0.0.0
+      BACKEND_PORT: 8000
+      CORS_ORIGINS: http://localhost:3000,http://localhost:8000
+      SECRET_KEY: daiminh-dev-secret-key-change-in-production
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+    networks:
+      - daiminh-network
+    command: python main.py
+
+volumes:
+  postgres_data:
+  redis_data:
+  minio_data:
+
+networks:
+  daiminh-network:
+    driver: bridge
