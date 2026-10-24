@@ -1,0 +1,200 @@
+{
+  "main": {
+    "id": "edaf91378990bd15",
+    "type": "split",
+    "children": [
+      {
+        "id": "7fc5c35ac6a0bcac",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "135bb09c84d580c5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "SETUP_DNS_MATBAO.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SETUP_DNS_MATBAO"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "f93afcea98cf0dd7",
+    "type": "split",
+    "children": [
+      {
+        "id": "d05923ad9c59aa3c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b13abbba4fe12186",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Trình duyệt tệp"
+            }
+          },
+          {
+            "id": "e7e2883adc5db0c3",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Tìm kiếm"
+            }
+          },
+          {
+            "id": "9f4d0844c3e13284",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Đánh dấu"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "77574a744bdfade1",
+    "type": "split",
+    "children": [
+      {
+        "id": "4f515c2311016182",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d0b7fb50a967bc28",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "SETUP_DNS_MATBAO.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Liên kết đến"
+            }
+          },
+          {
+            "id": "54f794c369bc0ce7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "SETUP_DNS_MATBAO.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Liên kết đi ra"
+            }
+          },
+          {
+            "id": "d6ed718c59b9a721",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Thẻ"
+            }
+          },
+          {
+            "id": "6e46df3380b1b3e4",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Tất cả thuộc tính"
+            }
+          },
+          {
+            "id": "050862a00d6a2520",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "SETUP_DNS_MATBAO.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Đề cương"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Mở bộ chuyển đổi nhanh": false,
+      "graph:Mở xem biểu đồ": false,
+      "canvas:Tạo bảng mới": false,
+      "daily-notes:Mở ghi chú hôm nay": false,
+      "templates:Chèn mẫu": false,
+      "command-palette:Mở khay lệnh": false,
+      "bases:Tạo cơ sở mới": false
+    }
+  },
+  "active": "135bb09c84d580c5",
+  "lastOpenFiles": [
+    "GITHUB_SETUP_QUICK.md",
+    "GITHUB_SETUP_QUICK.md.tmp.29700.f39d1eee9093",
+    "ANDROID_BUILD_NOW.md",
+    "ANDROID_BUILD_NOW.md.tmp.29700.d3d450b56efe",
+    "SETUP_ANDROID_BUILD.md",
+    "BUỔI_SÁNG_ANH_CẦN_LÀM.md"
+  ]
+}
