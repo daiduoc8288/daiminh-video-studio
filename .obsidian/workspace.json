@@ -190,6 +190,7 @@
   },
   "active": "135bb09c84d580c5",
   "lastOpenFiles": [
+    "RAILWAY_DEPLOY.md",
     "frontend/next.config.js.tmp.29724.1332e378bfee",
     "frontend/node_modules/caniuse-lite/data/features/wasm-signext.js",
     "frontend/node_modules/@typescript-eslint/eslint-plugin/dist/index.js",
@@ -201,7 +202,6 @@
     "frontend/node_modules/axobject-query/lib/etc/objects/DescriptionListTermRole.js",
     "frontend/node_modules/@typescript-eslint/utils/dist/eslint-utils/deepMerge.js",
     "frontend/node_modules/@typescript-eslint/typescript-estree/node_modules/semver/functions/patch.js",
-    "frontend/node_modules/jsx-ast-utils/lib/hasProp.js",
     "frontend/node_modules/regexp.prototype.flags/CHANGELOG.md",
     "frontend/node_modules/eslint-config-next/node_modules/globals/readme.md",
     "frontend/node_modules/tailwindcss/README.md",
