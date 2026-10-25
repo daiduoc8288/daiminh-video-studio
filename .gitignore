@@ -96,3 +96,4 @@ storage/
 # IDE extensions
 .vscode/extensions.json
 .vscode/settings.json
+.vercel
