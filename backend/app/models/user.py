@@ -1,51 +1,17 @@
-"""User Pydantic schemas"""
+from sqlalchemy import Column, Integer, String, DateTime, Boolean
+from sqlalchemy.ext.declarative import declarative_base
+from datetime import datetime
 
-from pydantic import BaseModel, EmailStr
-from typing import Optional
-from enum import Enum
+Base = declarative_base()
 
-
-class RoleEnum(str, Enum):
-    ADMIN = "admin"
-    EDITOR = "editor"
-    REVIEWER = "reviewer"
-
-
-class UserBase(BaseModel):
-    email: EmailStr
-    full_name: str
-    role: RoleEnum = RoleEnum.EDITOR
-
-
-class UserCreate(UserBase):
-    password: str
-
-
-class UserUpdate(BaseModel):
-    full_name: Optional[str] = None
-    avatar_url: Optional[str] = None
-
-
-class UserResponse(UserBase):
-    id: str
-    avatar_url: Optional[str] = None
-    created_at: str
-    updated_at: str
-
-    class Config:
-        from_attributes = True
-
-
-class LoginRequest(BaseModel):
-    email: EmailStr
-    password: str
-
-
-class TokenResponse(BaseModel):
-    access_token: str
-    refresh_token: str
-    token_type: str = "bearer"
-
-
-class LoginResponse(TokenResponse):
-    user: UserResponse
+class User(Base):
+    __tablename__ = "users"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, unique=True, index=True)
+    username = Column(String, unique=True, index=True)
+    hashed_password = Column(String)
+    full_name = Column(String, nullable=True)
+    is_active = Column(Boolean, default=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

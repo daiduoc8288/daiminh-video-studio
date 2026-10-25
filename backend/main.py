@@ -1,31 +1,45 @@
-"""
-DAIMINH AI VIDEO STUDIO - Backend API
-Main entry point
-"""
-
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from app.routes import auth, videos, projects
 import os
-import sys
-from pathlib import Path
 
-# Add app directory to path
-sys.path.insert(0, str(Path(__file__).parent))
+app = FastAPI(
+    title="DaiMinh AI Video Studio API",
+    description="Professional AI-powered video editing backend",
+    version="1.0.0"
+)
 
-from app.main import create_app
+# CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-# Create FastAPI app
-app = create_app()
+# Include routers
+app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
+app.include_router(videos.router, prefix="/api/videos", tags=["videos"])
+app.include_router(projects.router, prefix="/api/projects", tags=["projects"])
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "service": "DaiMinh API"}
+
+@app.get("/")
+async def root():
+    return {
+        "service": "DaiMinh AI Video Studio Backend",
+        "version": "1.0.0",
+        "endpoints": {
+            "auth": "/api/auth",
+            "videos": "/api/videos",
+            "projects": "/api/projects",
+            "docs": "/docs"
+        }
+    }
 
 if __name__ == "__main__":
     import uvicorn
-
-    host = os.getenv("BACKEND_HOST", "0.0.0.0")
-    port = int(os.getenv("BACKEND_PORT", "8000"))
-    debug = os.getenv("DEBUG", "true").lower() == "true"
-
-    uvicorn.run(
-        "main:app",
-        host=host,
-        port=port,
-        reload=debug,
-        reload_dirs=["app"] if debug else None,
-    )
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
